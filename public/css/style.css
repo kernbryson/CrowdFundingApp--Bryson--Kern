@@ -32,5 +32,20 @@ header, .project:not(:last-child) {
 li{
   float: left;
   margin: 10px;
+  margin-right: 20px;
 
+}
+#title{
+  font-size: 45px;
+  color: #230903;
+  background-color: #B3C9B3;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 8px 8px #9EA99E;
+}
+body{
+  background-color:#B3C9B3 ;
+}
+.homecolor{
+  background-color: #230903;
 }
