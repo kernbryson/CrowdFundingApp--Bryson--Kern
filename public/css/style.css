@@ -27,12 +27,14 @@ header, .project:not(:last-child) {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  
  
 }
 li{
   float: left;
   margin: 10px;
   margin-right: 20px;
+  color:#B3C9B3 ;
 
 }
 #title{
@@ -48,4 +50,13 @@ body{
 }
 .homecolor{
   background-color: #230903;
+}
+.commenthead{
+  background-color: #230903;
+  display: block;
+  
+}
+.blogposts{
+  border: solid black 3px;
+  width: 80vw;
 }
