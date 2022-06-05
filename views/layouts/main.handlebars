@@ -15,12 +15,11 @@
       <h1>
         <ul class="navbr">
           <li><a style="color:#B3C9B3" href="/">Home</a></li>
-         <li><a style="color:#B3C9B3" href="/">DashBoard</a></li>
          <li> {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button style="color:#B3C9B3" class="no-button" id="logout">logout</button>
+        <li><a style="color:#B3C9B3" href="/profile">DashBoard</a> </li>
+        <li><button style="color:#B3C9B3" class="no-button" id="logout">logout</button></li>
         {{else}}
-        <a style="color:#B3C9B3" href="/login">login</a>
+       <li> <a style="color:#B3C9B3" href="/login">login</a></li>
         {{/if}}</li>
         </ul>
          <p id="title">The Tech Blog</p>

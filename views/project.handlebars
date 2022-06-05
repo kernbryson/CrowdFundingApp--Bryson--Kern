@@ -1,10 +1,36 @@
-<div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+
+<link rel="stylesheet" href="/public/css/style.css">
+<div class="prjdiv">
+  <h2 class="projectview id="createdProject" data-projectId = {{id}}>{{name}} <p class="text-right">Created by {{user.name}} on {{format_date date_created}}</p></h2>
+  <p class="projdesc">{{description}}</p>
   
-   
+</div> 
+{{#if logged_in}}
+   <form class="form new-project-form" >
+      <div class="form-group">
+        <input class="form-input" type="text" id="comment" name="comment" />
+      </div>
+      </form>
   <p>
-    <button class="btn btn-primary">Fund this Project!</button>
+    <button class="btn btn-primary" id="commentBtn">Add comment</button>
   </p>
 </div>
+{{else}}
+<p class="text-center">Please Log In to add a comment</p>
+{{/if}}
+{{#each comments as |comment|}}
+  <div class='row'>
+    <div class='card'>
+      <div class='card-body'>
+        <p class='card-text'>{{comment.content}}</p>
+      </div>
+      <div class='card-footer text-muted'>
+        Posted by
+        {{comment.user.username}}
+        on
+        {{comment.createdAt}}
+      </div>
+    </div>
+  </div>
+{{/each}}
+<script src="./js/comments.js"></script>

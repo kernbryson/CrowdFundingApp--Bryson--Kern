@@ -60,3 +60,15 @@ body{
   border: solid black 3px;
   width: 80vw;
 }
+.projectview{
+  background-color: #230903;
+  color: #9EA99E;
+  display: block;
+  
+}
+.prjdiv{
+  border: solid 3px #230903;
+}
+.projdesc{
+  text-align: center;
+}
