@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
-
-router.post('/', async (req, res) => {
+const withAuth = require('../../utils/auth');
+router.post('/', withAuth, async (req, res) => {
   try {
     const newComment = {
       description: req.body.description,
@@ -9,8 +9,12 @@ router.post('/', async (req, res) => {
       project_id: req.body.project_id,
     };
     const commentData = await Comment.create(newComment);
-    res.json(commentData);
+    res.status(200).json(commentData);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+
+
+module.exports = router;
