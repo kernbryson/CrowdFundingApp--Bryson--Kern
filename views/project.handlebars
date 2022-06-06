@@ -8,7 +8,8 @@
 {{#if logged_in}}
    <form id="comment-form" class="form new-project-form" >
       <div class="form-group">
-        <input class="form-input" type="text" id="comment" name="comment" />
+        <input type="hidden" name="post-id" value="{{post.id}}" />
+       <textarea name="comment-body" class="form-input"></textarea>
       </div>
       </form>
  <button class="btn btn-primary" id="commentBtn">Add comment</button>
@@ -33,4 +34,3 @@
   </div>
 {{/each}}
 {{/if}}
-<script src="./js/comments.js"></script>

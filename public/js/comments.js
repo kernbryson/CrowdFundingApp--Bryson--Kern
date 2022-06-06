@@ -11,15 +11,16 @@
 // }
 
 const newCommentHandler = async (event) => {
-  console.log('click');
+ 
   event.preventDefault();
   console.log('click');
-  const commentBox = document.querySelector('#comment').ariaValueMax.trim();
+  const body = document.querySelector('textarea[name="comment-body"]').value;
+  const postId = document.querySelector('input[name="post-id"]').value;
 
-  if (commentBox) {
-    const response = await fetch(`/api/comments`, {
+  if (body) {
+   await fetch(`/api/comments`, {
       method: 'POST',
-      body: JSON.stringify({ description }),
+      body: JSON.stringify({ body, postId }),
       headers: {
         'Content-Type': 'application/json',
       },
