@@ -12,10 +12,10 @@ User.hasMany(Project, {
   onDelete: 'CASCADE',
 });
 
-Project.hasMany(Comment, {
-  foreignKey: 'postId',
-  onDelete: 'CASCADE',
-});
+// Project.hasMany(Comment, {
+//   foreignKey: 'postId',
+//   onDelete: 'CASCADE',
+// });
 
 Comment.belongsTo(User, {
   foreignKey: 'userId',

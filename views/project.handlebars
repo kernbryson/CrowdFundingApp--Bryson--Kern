@@ -17,20 +17,20 @@
 {{else}}
 <p class="text-center">Please Log In to add a comment</p>
 {{/if}}
-{{#if comments.length}}
+<script src="/js/comments.js"></script>
 {{#each comments as |comment|}}
   <div class='row'>
     <div class='card'>
       <div class='card-body'>
-        <p class='card-text'>{{comment.description}}</p>
+        <p class='card-text'>{{body}}</p>
       </div>
       <div class='card-footer text-muted'>
         Posted by
-        {{comment.user.username}}
+        {{user.username}}
         on
-        {{comment.createdAt}}
+        {{format_date createdAt}}
       </div>
     </div>
   </div>
 {{/each}}
-{{/if}}
+
