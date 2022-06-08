@@ -31,6 +31,7 @@ Project.init(
         key: 'id',
       },
     },
+    
   },
   {
     sequelize,
