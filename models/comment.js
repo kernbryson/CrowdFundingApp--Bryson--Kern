@@ -15,20 +15,7 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
-    projectId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'project',
-        key: 'id',
-      },
-    },
+  
   },
   {
     sequelize,

@@ -18,9 +18,9 @@ router.get('/', async (req, res) => {
     const projects = projectData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      projects, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      projects,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -33,7 +33,7 @@ router.get('/project/:id', async (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['id', 'body'],
+          // attributes: ['id', 'body'],
           include: {
             model: User,
             attributes: ['name'],
@@ -47,10 +47,32 @@ router.get('/project/:id', async (req, res) => {
     });
 
     const project = projectData.get({ plain: true });
-    console.log(project)
+    console.log(project);
     res.render('project', {
       ...project,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/project/edit/:id', async (req, res) => {
+  try {
+    const projectData = await Project.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const project = projectData.get({ plain: true });
+    console.log(project);
+    res.render('editblog', {
+      ...project,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -61,7 +83,7 @@ router.get('/project/:id', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
+    const userData = await User.findByPk(req.session.userId, {
       attributes: { exclude: ['password'] },
       include: [{ model: Project }],
     });
@@ -70,7 +92,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -86,6 +108,5 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
-
 
 module.exports = router;

@@ -16,21 +16,26 @@
 {{else}}
 <p class="text-center">Please Log In to add a comment</p>
 {{/if}}
-<script src="/js/comments.js"></script>
+
 <div class="comments">
-{{#each comments as |comment|}}
-  <div class='row'>
-    <div class='card'>
+{{#each Comments as |Comment|}}
+  <div class='row test' id="commentCard">
+    <div class='card testtwo'>
       <div class='card-body'>
-        <p class='card-text'>{{comment.body}}</p>
+        <p class='card-text'>{{Comment.body}}</p>
       </div>
       <div class='card-footer text-muted'>
         Posted by
-        {{user.username}}
+        {{user.name}}
         on
         {{format_date createdAt}}
+        
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger deleteBtn" comment-id="{{id}}">DELETE</button>
       </div>
     </div>
   </div>
-{{/each}}
 </div>
+{{/each}}
+<script src="/js/comments.js"></script>
